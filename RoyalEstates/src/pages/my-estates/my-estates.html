@@ -1,0 +1,48 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <button menuToggle ion-button icon-only>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Royal Estates</ion-title>
+  </ion-navbar>
+  <ion-toolbar color="secondary">
+    <ion-title>My Estates</ion-title>
+  </ion-toolbar>
+    
+</ion-header>
+
+<ion-content padding>
+  <ion-card *ngIf='estates.length == 0'>
+    <ion-card-header>
+      You have no favourite estates
+    </ion-card-header>
+  </ion-card>
+  <ion-card *ngIf='estates.length != 0'>
+    <ion-card-header>
+      Saved Estates
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let item of estates">
+          <ion-thumbnail item-start>
+            <img src="{{item.image}}">
+          </ion-thumbnail>
+          <h2>Ref No. {{item.refNumber}}</h2>
+          <p>{{item.type}}, {{item.bedrooms}} bedrooms</p>
+          <p>{{item.locationName}}, {{item.region}}</p>
+          <button ion-button clear item-end (click)="itemTapped($event, item)">View</button>
+        </ion-item>
+      </ion-list>
+      <ion-item padding>
+        <ion-item text-wrap>
+          To save more estates, select a location, then you can save estates from their overview page.
+        </ion-item>
+        <button ion-item style="border-radius:3px; background-color:rgb(171,201,192); font-weight: bold; color:rgb(245, 245, 245); text-align:center" (click)="goToLocations()">
+          <ion-icon name="search"></ion-icon>
+          FIND A LOCATION
+      </button>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

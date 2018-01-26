@@ -1,0 +1,38 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title></ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingText="Pull to refresh" refreshingText="Loading Assets...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-card>
+    <img src="{{estate.image}}" />
+    <ion-card-content>
+      <ion-card-title>
+        <button style="border: 1px solid; border-radius:5px;" color="{{includes ? 'primary' : 'secondary'}}" ion-button icon-start (click)="saveHandle()" clear item-end>
+                <ion-icon name="{{includes ? 'md-bookmark' : 'ios-bookmark-outline'}}"></ion-icon>
+                {{includes ? "REMOVE FROM MY ESTATES" : "SAVE TO MY ESTATES"}}
+            </button>
+      </ion-card-title>
+      <table>
+        <tr>
+          <td>{{estate.type}}</td>
+          <td>Area: {{estate.area}} m<sup>2</sup></td>
+        </tr>
+        <tr>
+          <td><ion-badge item-end>{{estate.bedrooms}}</ion-badge> Bedrooms</td>
+          <td>Price: {{estate.price | currency:'USD':true:'2.2-2'}}</td>
+        </tr>
+        <tr></tr>
+      </table>
+      <p id="address">{{estate.address}}</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

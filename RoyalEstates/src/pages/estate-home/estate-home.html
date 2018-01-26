@@ -1,0 +1,18 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Ref. No {{estate.refNumber}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="goHome()">
+          <ion-icon name="home"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-tabs>
+  <ion-tab tabTitle="Overview" [root]="OverviewPageTab" tabIcon="ios-information-circle"></ion-tab>
+  <ion-tab tabTitle="Map" [root]="MapPageTab" tabIcon="map"></ion-tab>
+  <ion-tab tabTitle="Similar" [root]="SimilarPageTab" tabIcon="md-photos"></ion-tab>
+</ion-tabs>
